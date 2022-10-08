@@ -10,6 +10,11 @@
 //declare an empty string
 //itterate over string 
 
+// function itterativeCompressString(str){
+//   let compressedStr = "";
+//   for(let i =0; i<str.length; i++)
+// }
+
 //frecuency map:
 //create a frecuency map
 //using a for in loop
@@ -17,15 +22,14 @@
   //if obj[key] >1 then push the value and the key onto a string
 //return string
 
-function frecuencyCompressString(str){ //this function works as long as like chars are lumped together and in order
+function frecuencyCompressString(str){ //this function works as long as like chars are lumped together and in order.. so the logic will not work
   let compressedStr = "";
   const counts = {};
   for (let i = 0; i < str.length; i++){
     counts[str[i]] = counts[str[i]] ? counts[str[i]] + 1 : 1;
   }
-  console.log(counts);
   for (const key in counts){
-    counts[key] === 1 ? compressedStr += key : compressedStr += counts + key;
+    counts[key] === 1 ? compressedStr += key : compressedStr += counts[key] + key;
   }
   return compressedStr;
 }
@@ -40,3 +44,21 @@ console.log("frecuency:", map3);
   //counter++
 //if counter is 1 return arr item and recurse with arr sliced at 1
 //else if counter is greater than 1 return counter number + arr item and recursive arr sliced at counter-1
+
+function recursiveCompressString(str){ //works and is most successful!
+  if(str.length === 0){
+    return str;
+  }
+  let i = 0;
+  while(str[i] === str[0]){
+    i++;
+  }
+  if (i === 1){
+    return `${str[0]}` + recursiveCompressString(str.slice(i));
+  } else{
+    return `${i}${str[0]}` + recursiveCompressString(str.slice(i));
+  }
+}
+
+const recurse3 = recursiveCompressString("aaabccdddda");
+console.log("recursive:", recurse3);
