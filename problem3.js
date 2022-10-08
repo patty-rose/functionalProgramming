@@ -8,12 +8,32 @@
 
 //itterative:
 //declare an empty string
-//itterate over string 
+//itterate over string with for loop
+  //itterate over each char with a while loop..
 
-// function itterativeCompressString(str){
-//   let compressedStr = "";
-//   for(let i =0; i<str.length; i++)
-// }
+function itterativeCompressString(str){
+  let compressedStr = "";
+  for(let i = 0; i < str.length; i++){
+    if (str[i] === str[i-1]){
+      continue;
+    } else {
+      let count = i;
+      while (str[count] === str[i]){
+        count++;
+      }
+      if (count - i === 1){
+        compressedStr += str[i];
+      } else {
+        compressedStr += (count - i) + str[i];
+      }
+    }
+    
+  }
+  return compressedStr;
+}
+
+const itterative3 = itterativeCompressString("aaabccdddda");
+console.log("itterative:", itterative3);
 
 //frecuency map:
 //create a frecuency map
