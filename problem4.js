@@ -14,6 +14,24 @@
   //if value > 1 return false
 //return true
 
+function mapUniqueCheck(str){
+  const counts = {};
+  for(let i = 0; i < str.length; i++){
+    counts[str[i]] = counts[str[i]] ? counts[str[i]] + 1 : 1;
+  }
+  for (const key in counts){
+    if(counts[key] > 1) {
+      return false;
+    }
+  }
+  return true;
+}
+
+const map4True = mapUniqueCheck("copyright");
+const map4False = mapUniqueCheck("hello");
+console.log("map true:", map4True);
+console.log("map false:", map4False);
+
 //itterative:
 //loop through string
   //if lastIndexOf != firstIndexOf
