@@ -59,7 +59,7 @@ console.log("frecuency:", map3);
 
 //recursive:
 //base case is if arr length is empty return arr
-//declare a counter var
+//declare a count var
 //while loop while x is arr at position 0
   //counter++
 //if counter is 1 return arr item and recurse with arr sliced at 1
