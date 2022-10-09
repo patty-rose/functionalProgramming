@@ -14,47 +14,37 @@
 // Output: [2, 7, 9, 12]
 
 //quicksort:
+//base case when arr length is 1 or less
+  //return arr
 //declare pivot value
+//declare empty sorted array
+//declare 2 arrays for sorting less than and more than
+//itterate over array 
   //sort into two arrays greater than and less than pivot value
-//repeat until 
+//return concatenated sorted array with recursive less than and more than and pivot in the middle
 
 function quickSort(arr){
-
   //base case:
   if (arr.length <= 1){
-    return arr[0];
+    return arr;
 
   } else {
     //declare vars:
     let lessThan = [];
     let moreThan = [];
-    const pivot = arr[Math.floor(arr.length/2)];
+    const pivot = arr.pop();
+    let sorted = [];
 
     //loop and SORT into lesser and greater arrs:
     for (let i = 0; i < arr.length; i++){
-      if(arr[i] > pivot){
+      if(arr[i] >= pivot){
         moreThan.push(arr[i]);
-      } else if(arr[i] < pivot) {
+      } else if(arr[i] <= pivot) {
         lessThan.push(arr[i]);
       }
     }
 
-    //recursive clauses:
-    let leftNums = [];
-    let rightNums = [];
-    if(lessThan.length > 0){
-      leftNums = [quickSort(lessThan)];
-    }
-    if(moreThan.length > 0){
-      rightNums = [quickSort(moreThan)];
-    }
-
-    //combine back sorted arrays and then flatten into 1 array:
-    leftNums.push(pivot);
-    let sorted = leftNums.concat(rightNums);
-    let merged = [].concat.apply([], sorted);
-
-    return merged;
+    return sorted.concat(quickSort(lessThan), pivot, quickSort(moreThan));
   } 
 }
 
