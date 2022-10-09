@@ -19,12 +19,18 @@
 //repeat until 
 
 function quickSort(arr){
+
+  //base case:
   if (arr.length <= 1){
-    return [arr];
+    return arr[0];
+
   } else {
+    //declare vars:
     let lessThan = [];
     let moreThan = [];
-    const pivot = arr[0];
+    const pivot = arr[Math.floor(arr.length/2)];
+
+    //loop and SORT into lesser and greater arrs:
     for (let i = 0; i < arr.length; i++){
       if(arr[i] > pivot){
         moreThan.push(arr[i]);
@@ -32,7 +38,23 @@ function quickSort(arr){
         lessThan.push(arr[i]);
       }
     }
-    return quickSort(lessThan) + pivot + quickSort(moreThan);
+
+    //recursive clauses:
+    let leftNums = [];
+    let rightNums = [];
+    if(lessThan.length > 0){
+      leftNums = [quickSort(lessThan)];
+    }
+    if(moreThan.length > 0){
+      rightNums = [quickSort(moreThan)];
+    }
+
+    //combine back sorted arrays and then flatten into 1 array:
+    leftNums.push(pivot);
+    let sorted = leftNums.concat(rightNums);
+    let merged = [].concat.apply([], sorted);
+
+    return merged;
   } 
 }
 
