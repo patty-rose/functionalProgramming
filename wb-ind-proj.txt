@@ -1,0 +1,44 @@
+copied from codeshare.io:
+
+// Question #4: Checking for Uniqueness
+// Write an algorithm that determines whether all the elements in a string are unique. 
+// You may not convert the string into an array or use array methods to solve this problem. 
+// The algorithm should return a boolean.
+
+// Example
+// Input: "hello"
+// Output: false
+
+// Input: "copyright"
+// Output: true
+
+// notes:
+// input: str output: boolean
+// not using indexOf or lastIndexOf;
+// javascript 
+// frecuency map to solve
+
+// pseudo-code: 
+	//xx create an empty object to be a frecuency map
+	//xx loop through the string
+  	//xx populate the frecuency map with chars and counts
+  //xx loop through the frecuency map
+  	//xx if the value of character key is greater than 1
+    	//xx return false
+  //return true
+  
+function checkForUniqueness(str){ //"hel" counts={ h : 1, e: 1, l : 1} true
+	const counts = {};
+  for (let i = 0; i < str.length; i++){ //i = 4
+  	counts[str[i]] = counts[str[i]] ? counts[str[i]] + 1 : 1;
+    if(counts[str[i]] > 1){
+    	return false;
+    }
+  }
+  //for (const key in counts){
+  //	if (counts[key] > 1){
+  //  	return false;
+  //  }
+  //}
+  return true;
+}

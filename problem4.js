@@ -37,6 +37,7 @@ console.log("map false:", map4False);
   //if lastIndexOf != firstIndexOf
     //return false
 //return true
+
 function itterativeUniqueCheck(str){
   for(let i = 0; i < str.length; i++){
     if (str.lastIndexOf(str[i]) != str.indexOf(str[i])){
